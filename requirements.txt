@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+redis
+motor
+pydantic>=2.0.0
+pydantic-settings
+python-multipart
+celery
+requests
+pytest
+python-dotenv
+google-generativeai
