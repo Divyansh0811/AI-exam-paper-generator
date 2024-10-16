@@ -1,21 +1,27 @@
 from fastapi import APIRouter, HTTPException
-from app.models.models import TaskStatusResponseModel
-from app.services.task import task_status
-import logging
+from app.tasks.extract import extract_pdf_task  # Import the task to track its status
+from app.utils.utils import configure_logging
 
 router = APIRouter()
+logger = configure_logging()
 
-logger = logging.getLogger(__name__)
-
-@router.post("/task/{task_id}", response_model=TaskStatusResponseModel)
+@router.get("/task/{task_id}")
 async def get_task_status(task_id: str):
-  try:
-    if not task_id:
-      raise HTTPException(status_code=404, detail="Please add task_id")
-    result = await task_status(task_id)
-    return result
-  except Exception as e:
-    #logger.error("Error in /extract/pdf")
-    raise HTTPException(status_code=500, detail=str(e))
+    """
+    Fetch the status and result of a task by its task_id.
+    """
+    try:
+        task = extract_pdf_task.AsyncResult(task_id)  # Fetch the task status using task ID
 
+        if task.state == 'PENDING':
+            return {"status": "Pending", "result": None}
+        elif task.state == 'SUCCESS':
+            return {"status": "Completed", "result": task.result}
+        elif task.state == 'FAILURE':
+            return {"status": "Failed", "error": str(task.info)}
+        else:
+            return {"status": task.state, "result": None}
 
+    except Exception as e:
+        logger.error(f"Error fetching task status for task_id {task_id}")
+        raise HTTPException(status_code=500, detail=str(e))

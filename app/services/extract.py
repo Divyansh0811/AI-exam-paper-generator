@@ -3,10 +3,11 @@ import google.generativeai as genai
 from app.config import settings
 from app.constants import SCHEMA_EXTRACTION_PROMPT
 from app.utils.utils import configure_logging
+from app.celery import celery_app
 
 logger = configure_logging()
 
-  
+@celery_app.task  
 async def extract_pdf(file_name: str):
   try:
     print("File name ->", file_name)
