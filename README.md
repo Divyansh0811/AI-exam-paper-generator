@@ -8,6 +8,7 @@ This is a backend API application that allows users to create, read, update, and
 - **CRUD Operations**: Perform basic create, read, update, and delete operations on exam papers.
 - **AI Integration**: Uses Google Gemini (LLM) to convert natural language inputs into JSON schemas.
 - **PDF Data Extraction**: Extracts structured data from PDFs and converts it into a JSON schema.
+- **Natural language text Data Extraction**: Extracts structured data from a natural language text and converts it into a JSON schema.
 - **Asynchronous Task Handling**: Async tasks are managed using **Celery** to ensure smooth and non-blocking execution of long-running tasks.
 - **Data Validation**: Inputs are validated using **Pydantic**, ensuring proper data structures before interacting with the system.
 - **Reverse Proxy**: The application uses **NGINX** as a reverse proxy to handle load balancing and rate limiting.
