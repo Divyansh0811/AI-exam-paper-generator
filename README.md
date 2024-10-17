@@ -1,5 +1,4 @@
 
-```markdown
 # Sample Exam Paper Backend API
 
 ## Overview
@@ -27,12 +26,15 @@ The API is designed to be deployed on cloud platforms like **AWS** using **Kuber
 
 - **Private Subnets**: Both the application and the database are hosted in private subnets, ensuring they are not exposed directly to the internet.
 - **Security Groups & NACLs**: Security groups and NACLs (Network Access Control Lists) are used to restrict access at both the instance and subnet levels, allowing only necessary traffic.
+- **High Availability & reliability**: Multiple NAT Gateways are deployed in multiple AZs to make our service highly available and autoscaling can also be implemented.
 - **SSH Access**: Ports such as **SSH** (port 22) are opened only for internal network access.
-- **Daily Backups**: Regular daily backups of the database are essential to ensure data availability in case of failure.
+- **Daily Backups**: Regular daily database backups are essential to ensure data availability in case of failure.
 - **Auto-Scaling**: Autoscaling is configured based on CPU and memory metrics to handle varying loads effectively.
+- **Tools**: Use tools like eksctl, kubectl to communicate with the K8s API server and create the architecture in AWS EKS
+- and much more...
+### Cloud Architecture Diagram:
+![K8s_architecture_Template](https://github.com/user-attachments/assets/71c74c48-75b4-4b0b-a1c0-e2d34f55a8ea)
 
-### Example Cloud Architecture Diagram:
-(Insert your cloud architecture diagram here if applicable.)
 
 ## Running the Application Locally (Using Docker Compose)
 
@@ -92,8 +94,8 @@ pytest
 
 ## Deployment
 If deploying on AWS EKS:
-- Ensure that the cluster is set up with the necessary **autoscaling** based on CPU and memory.
-- Use **CloudWatch** to monitor the system and set up alerts for CPU, memory, and disk space metrics.
+- Ensure the cluster is set up with the necessary **autoscaling** based on CPU and memory using a metrics server.
+- Use **CloudWatch or self-hosted Kube Prometheus monitoring stack** to monitor the system and set up alerts for CPU, memory, and disk space metrics.
 - Make sure that **daily backups** are enabled for MongoDB.
 - Manage security groups and NACLs to ensure minimal exposure to the public internet.
 
