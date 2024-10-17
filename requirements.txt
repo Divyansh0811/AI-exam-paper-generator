@@ -8,6 +8,7 @@ python-multipart
 celery
 requests
 pytest
+httpx
 python-dotenv
 google-generativeai
 bleach
