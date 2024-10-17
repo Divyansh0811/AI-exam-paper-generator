@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from app.tasks.extract import extract_pdf_task  # Import the task to track its status
 from app.utils.utils import configure_logging
+from app.tasks.extract import extract_pdf_task 
 
 router = APIRouter()
 logger = configure_logging()

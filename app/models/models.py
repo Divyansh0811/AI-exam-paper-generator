@@ -47,10 +47,3 @@ class ExtractionPDFModel(BaseModel):
 
 class ExtractTextModel(BaseModel):
   user_input: str = Field(..., description="Text input to be extracted")
-
-class TaskStatusResponseModel(BaseModel):
-  task_id: str
-  status: str
-  result: str = None
-  error: str = None
-  info: str = None

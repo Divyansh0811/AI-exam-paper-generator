@@ -15,16 +15,14 @@ logger = configure_logging()
 
 async def extract_pdf(file_name: str):
     try:
-        print("File name ->", file_name)
         if not file_name:
-            raise HTTPException(status_code=400, detail="Please provide a file name")
+          raise HTTPException(status_code=400, detail="Please provide a file name")
         
         genai.configure(api_key=settings.GEMINI_API_KEY)
         sample_pdf = genai.upload_file(file_name)
         llm = genai.GenerativeModel(model_name="gemini-1.5-flash")
         
         response = await llm.generate_content([SCHEMA_EXTRACTION_PROMPT, sample_pdf])
-        print("RESPONSE INSIDE EXTRACT_PDF", response)
         return response.text
     except Exception as e:
         logger.error("Error in extract_pdf", exc_info=True)  # Logs exception details

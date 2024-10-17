@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from app.models.models import ExtractionPDFModel, ExtractTextModel
-from app.services.extract import extract_pdf, extract_text
+from app.services.extract import ExtractionService
 from app.tasks.extract import extract_pdf_task  # Import the Celery task
 from app.utils.utils import configure_logging
 
@@ -22,7 +22,7 @@ async def extract_from_pdf(request: ExtractionPDFModel):
 @router.post("/text")
 async def extract_from_text(request: ExtractTextModel):
   try:
-    result = await extract_text(request.user_input)
+    result = await ExtractionService.extract_text(request.user_input)
     return result
   except Exception as e:
     logger.error("Error in /extract/text")
