@@ -32,7 +32,7 @@ The API is designed to be deployed on cloud platforms like **AWS** using **Kuber
 - **Auto-Scaling**: Autoscaling is configured based on CPU and memory metrics to handle varying loads effectively.
 - **Tools**: Use tools like eksctl, kubectl to communicate with the K8s API server and create the architecture in AWS EKS
 - and much more...
-### Cloud Architecture Diagram:
+### Cloud Architecture Diagram: [View here](https://drive.google.com/file/d/1HTe5B4Gr8l7xsGgyGVsuVfaPfxqyu-PK/view?usp=sharing)
 ![K8s_architecture_Template](https://github.com/user-attachments/assets/71c74c48-75b4-4b0b-a1c0-e2d34f55a8ea)
 
 
