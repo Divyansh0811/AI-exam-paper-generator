@@ -10,3 +10,4 @@ requests
 pytest
 python-dotenv
 google-generativeai
+bleach

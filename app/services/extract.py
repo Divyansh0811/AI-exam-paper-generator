@@ -11,7 +11,6 @@ class ExtractionService:
   @celery_app.task  
   async def extract_pdf(file_name: str):
     try:
-      print("File name ->", file_name)
       if not file_name:
         raise HTTPException(status_code=400, detail = "Please provide a file name")
       genai.configure(api_key=settings.GEMINI_API_KEY)
