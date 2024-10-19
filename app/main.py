@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 @app.get("/", summary="Health Check Endpoint")
 async def root():
     logger.info("Health check endpoint accessed.")
-    return JSONResponse(content={"message": "API is up and running!"})
+    return JSONResponse(content={"message": "API is up and running! 🟢"})
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
