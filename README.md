@@ -78,10 +78,16 @@ The API is designed to be deployed on cloud platforms like **AWS** using **Kuber
 5. **Celery Workers**:
    Celery workers will automatically be started by the `docker-compose` setup to handle async tasks.
 
-6. **NGINX Reverse Proxy**:
-   NGINX is configured to handle all incoming requests and proxy them to the FastAPI application running on port 8000.
+6. **Access the flower dashboard**:
+   Once the services are up and running, you can access the flower dashboard at:
+   ```
+   http://localhost/flower
+   ```
 
-7. **Tear Down**:
+7. **NGINX Reverse Proxy**:
+   NGINX is configured to handle all incoming requests and proxy them to the FastAPI application running on port 8000 and flower dashboard running on port 5556.
+
+8. **Tear Down**:
    To stop and remove all running containers:
    ```bash
    docker-compose down
