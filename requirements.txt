@@ -12,3 +12,4 @@ httpx
 python-dotenv
 google-generativeai
 bleach
+flower
