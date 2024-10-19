@@ -73,6 +73,7 @@ services:
       - "80:80" 
     volumes:
       - ./deployment/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./.htpasswd:/etc/nginx/.htpasswd
     depends_on:
       - web 
 

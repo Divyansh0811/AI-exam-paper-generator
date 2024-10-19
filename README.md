@@ -10,7 +10,7 @@ This is a backend API application that allows users to create, read, update, and
 - **PDF Data Extraction**: Extracts structured data from PDFs and converts it into a JSON schema.
 - **Natural language text Data Extraction**: Extracts structured data from a natural language text and converts it into a JSON schema.
 - **Asynchronous Task Handling**: Async tasks are managed using **Celery** to ensure smooth and non-blocking execution of long-running tasks.
-- **Task Monitoring with Flower**: The application integrates **Flower** for monitoring Celery tasks, providing a web interface to track task progress and manage workers.
+- **Task Monitoring with Flower**: The application integrates **Flower** for monitoring Celery tasks, providing a web interface to track task progress and manage workers. The Flower dashboard is password protected for security reasons.
 - **Data Validation**: Inputs are validated using **Pydantic**, ensuring proper data structures before interacting with the system.
 - **Reverse Proxy**: The application uses **NGINX** as a reverse proxy to handle load balancing and rate limiting.
 
@@ -22,6 +22,7 @@ Security has been a key consideration throughout the application. Several layers
 - **Data Sanitization**: All inputs are sanitized before being stored in the database to prevent injection attacks like **Stored XSS**.
 - **CORS (Cross-Origin Resource Sharing)**: APIs are restricted to known origins, preventing unauthorized domains from accessing the API.
 - **Protection Against Attacks**: The system is designed to defend against common vulnerabilities, such as **Stored XSS** and **DDoS**.
+- **Password Protection for Flower Dashboard**: The Flower dashboard is secured with basic authentication. Users must enter a username and password to access the dashboard.
 
 ## Cloud Architecture (AWS EKS)
 The API is designed to be deployed on cloud platforms like **AWS** using **Kubernetes (EKS)**. The potential cloud architecture includes the following elements:
@@ -43,6 +44,38 @@ The API is designed to be deployed on cloud platforms like **AWS** using **Kuber
 ### Prerequisites
 - Docker
 - Docker Compose
+- htpasswd file
+
+## How to Generate `.htpasswd` for Flower Dashboard
+
+To set up password protection for the Flower dashboard, you need to create a `.htpasswd` file
+### For Linux users
+
+1. Install apache2-utils
+  ```bash
+  sudo apt-get update
+  sudo apt-get install apache2-utils
+
+  ``` 
+2. Create the .htpasswd file
+  ``` bash 
+  htpasswd -c /mnt/c/path/to/.htpasswd username
+  ```
+
+### For Windows users
+
+We can use Using Git Bash on windows
+
+1. **Open Git Bash**: Launch Git Bash from your Start menu.
+
+2. **Create the `.htpasswd` file**:
+  Use the following command to create the file:
+
+  ```bash
+   htpasswd -c /c/path/to/.htpasswd username
+  ```
+Another way is use websites which generate .htpasswd file but this is not recommended since you will be entering your password on a random website
+
 
 ### Steps to Run Locally
 
