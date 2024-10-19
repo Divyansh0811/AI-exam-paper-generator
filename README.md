@@ -10,6 +10,7 @@ This is a backend API application that allows users to create, read, update, and
 - **PDF Data Extraction**: Extracts structured data from PDFs and converts it into a JSON schema.
 - **Natural language text Data Extraction**: Extracts structured data from a natural language text and converts it into a JSON schema.
 - **Asynchronous Task Handling**: Async tasks are managed using **Celery** to ensure smooth and non-blocking execution of long-running tasks.
+- **Task Monitoring with Flower**: The application integrates **Flower** for monitoring Celery tasks, providing a web interface to track task progress and manage workers.
 - **Data Validation**: Inputs are validated using **Pydantic**, ensuring proper data structures before interacting with the system.
 - **Reverse Proxy**: The application uses **NGINX** as a reverse proxy to handle load balancing and rate limiting.
 
