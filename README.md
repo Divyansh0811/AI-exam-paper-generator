@@ -46,7 +46,7 @@ The API is designed to be deployed on cloud platforms like **AWS** using **Kuber
 - Docker Compose
 - htpasswd file
 
-## How to Generate `.htpasswd` for Flower Dashboard
+### How to Generate `.htpasswd` for Flower Dashboard
 
 To set up password protection for the Flower dashboard, you need to create a `.htpasswd` file
 ### For Linux users
